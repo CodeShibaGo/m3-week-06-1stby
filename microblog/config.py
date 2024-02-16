@@ -1,4 +1,3 @@
-from microblog import app
 import os
 
 class Config:
