@@ -1,6 +1,21 @@
 # Questions
 
 ## Q: 使用 `virtualenv` 建立虛擬環境 #116
+    'virtualenv'是用來建立一個虛擬環境,
+    可以在這個環境中安裝所需的套件或是函式庫。
+
+    安裝virtualenv
+    ```
+    pip install virtualenv
+    ```
+    建立虛擬環境
+    ```
+    python3 -m venv venv
+    ```
+    使用虛擬環境
+    ```
+    source ./venv/bin/activate
+    ```
 
 ## Q: python-dotenv 如何使用？ #119
 
