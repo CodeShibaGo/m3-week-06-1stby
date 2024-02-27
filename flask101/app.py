@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
 from forms import LoginForm
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 load_dotenv()
@@ -26,6 +27,14 @@ class Users(db.Model):
         self.name = name
         self.email = email
         self.mobile = mobile
+
+
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 @app.route('/')
 @app.route('/index')
