@@ -41,7 +41,19 @@
 
 flaskenv 文件通常用於設置 Flask 相關的變量，如 FLASK_APP（指定 Flask 應用程序的入口點）和 FLASK_ENV（指定 Flask 應用程序的運行環境）。
 ## Q: 如何使用 Flask-SQLAlchemy 連接上 MySQL？ #123
+安裝Flask-SQLAlchemy套件\安裝MySQL\安裝PyMySQL
 
+SQLALCHEMY_DATABASE_URI 設定
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@localhost:{os.getenv('DB_HOST_PORT')}/{os.getenv('DB_NAME')}"
+
+username：資料庫的使用者名稱。
+password：資料庫的使用者密碼。
+server：資料庫所在位置為localhost:3306。
+db：資料庫的名稱。
+
+
+把重要資訊存在.env
 ## Q: Flask-Migrate 如何使用？ #124
 
 ## Q: 如何使用 SQLAlchemy 下 Raw SQL？ #125
