@@ -1,8 +1,8 @@
-"""flask101db
+"""Initial migration
 
-Revision ID: 4533d945ac5e
+Revision ID: 1cd71941177d
 Revises: 
-Create Date: 2024-02-26 16:35:43.986916
+Create Date: 2024-03-01 15:29:54.165827
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4533d945ac5e'
+revision = '1cd71941177d'
 down_revision = None
 branch_labels = None
 depends_on = None

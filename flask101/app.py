@@ -11,7 +11,7 @@ load_dotenv()
 
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@localhost:{os.getenv('DB_HOST_PORT')}/{os.getenv('DB_NAME')}"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_HOST_PORT')}/{os.getenv('DB_NAME')}"
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
