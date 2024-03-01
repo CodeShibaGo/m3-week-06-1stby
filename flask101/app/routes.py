@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from urllib.parse import urlsplit
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
@@ -61,3 +62,19 @@ def register():
         flash('恭喜，你現在是一名註冊使用者！')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    posts = [
+        {'author': user, 'body': '今天天氣真好 '},
+        {'author': user, 'body': '好想吃火鍋 '}
+    ]
+    return render_template('user.html', user=user, posts=posts)
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.now(timezone.utc)
+        db.session.commit()
