@@ -55,7 +55,22 @@ db：資料庫的名稱。
 
 把重要資訊存在.env
 ## Q: Flask-Migrate 如何使用？ #124
+安裝Flask-Migrate
+初始化Flask-Migrate
 
+在專案內加入
+from flask_migrate import Migrate
+migrate = Migrate(app, db)
+
+接下來就是要使用flask_migrate的指令來初始化設定檔以及設定資料庫等資訊
+flask db init
+這指令會依據Model的結構產生初始化設定並放置於migrations資料夾內。
+
+flask db migrate
+透過這指令可以產生資料庫內容，而不用去寫SQL語法建立Table以及設定DB Schema。
+
+flask db upgrade
+當Model的結構有異動時要自動更新資料庫的話首先先執行此指令，接下來再執行flask db migrate，如此即可更新資料庫以符合Model資料結構。
 ## Q: 如何使用 SQLAlchemy 下 Raw SQL？ #125
 
 ## Q: 如何用土炮的方式建立 Table？ #126
