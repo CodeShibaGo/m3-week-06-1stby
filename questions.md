@@ -72,7 +72,16 @@ flask db migrate
 flask db upgrade
 當Model的結構有異動時要自動更新資料庫的話首先先執行此指令，接下來再執行flask db migrate，如此即可更新資料庫以符合Model資料結構。
 ## Q: 如何使用 SQLAlchemy 下 Raw SQL？ #125
-
+使用Text模組
+    from sqlalchemy.sql import text
+創建sql查詢
+    sql = text("SELECT * FROM users WHERE username = :username")
+執行
+    with db_engine.connect() as connection:
+    result = connection.execute(sql, username='example_user')
+    user = result.fetchone()
+列印結果
+    print(user)
 ## Q: 如何用土炮的方式建立 Table？ #126
 
 ## Q: 什麼是密碼雜湊？如何使用 Python 實現？ #129
