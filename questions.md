@@ -85,3 +85,12 @@ flask db upgrade
 ## Q: 如何用土炮的方式建立 Table？ #126
 
 ## Q: 什麼是密碼雜湊？如何使用 Python 實現？ #129
+密碼雜湊:將密碼加密後,才加入資料庫,以防止密碼被不當存取。
+使用Werkzeug來進行加密與驗證。
+安裝pip install Werkzeug
+匯入Werkzeug套件
+from werkzeug.security import generate_password_hash, check_password_hash
+使用generate_password_hash方法來加密，並且要存在hashed_password變數中並且將結果印出來
+password = 'yorpwd'
+hashed_password = generate_password_hash(password)
+print(hashed_password)
